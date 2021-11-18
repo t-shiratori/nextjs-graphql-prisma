@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  mysqldb:
+    image: mysql:5.7
+    container_name: graphql_prisma_mysql_container
+    environment:
+      MYSQL_ROOT_PASSWORD: password-root
+      MYSQL_DATABASE: test-db
+      MYSQL_USER: user1
+      MYSQL_PASSWORD: password-user1
+      TZ: 'Asia/Tokyo'
+    volumes:
+      - ./db/data:/var/lib/mysql
+    ports:
+      - '3306:3306'
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
